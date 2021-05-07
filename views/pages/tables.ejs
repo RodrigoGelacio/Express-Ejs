@@ -1,0 +1,74 @@
+<%- include('../template/tablesHeader') -%>
+
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1 class="text-center"><span class="fa fa-fire"></span> Hot Restaurant</h1>
+            <hr>
+            <h2 class="text-center">Current Reservations and Waiting List</h2>
+            <br>
+
+            <div class="text-center">
+                <a href="/reserve"><button class="btn btn-lg btn-danger"><span class="fa fa-credit-card"></span> Make
+                        Reservation</button></a>
+                <a href="/"><button class="btn btn-lg btn-default"><span class="fa fa-home"></span></button></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <!-- Current Tables in Use -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Current Reservations</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul id="tableList" class="list-group"></ul>
+
+                        <% for(var i=0; i < tableData.length; i++){ %>
+
+                            <li class='list-group-item mt-4'>
+                                <p>Nombre: <%= tableData[i].customerName %>
+                                </p>
+                                <p> Numero Cel: <%= tableData[i].phoneNumber %>
+                                </p>
+                                <p> Email: <%= tableData[i].customerEmail %>
+                                </p>
+                                <p> ID: <%= tableData[i].customerID %>
+                                </p>
+                            </li>
+
+                            <% } %>
+                    </div>
+                </div>
+
+                <!-- Waiting List Card -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h4>Waiting List</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul id="waitList" class="list-group"></ul>
+
+                        <% for(var i=0; i < waitingListData.length; i++) { %>
+
+                            <li class='list-group-item mt-4'>
+                                <p>Nombre: <%= waitingListData[i].customerName %>
+                                </p>
+                                <p> Numero Cel: <%= waitingListData[i].phoneNumber %>
+                                </p>
+                                <p> Email: <%= waitingListData[i].customerEmail %>
+                                </p>
+                                <p> ID: <%= waitingListData[i].customerID %>
+                                </p>
+                            </li>
+
+                            <% } %>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%- include('../template/tableFooter') -%>
